@@ -1,0 +1,5 @@
+%h1 Blogs
+
+-@blogs.each do |blog|
+	%h2=link_to blog.title, @blog
+	%p=blog.category.name

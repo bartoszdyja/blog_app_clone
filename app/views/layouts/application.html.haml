@@ -6,8 +6,27 @@
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
 	%body
+		%nav.navbar.navbar-default.navbar-fixed-top
+			.container
+				.navbar-header
+					%a.navbar-brand{:href => "http://google.com"}
+						=image_tag("http://www.www8-hp.com/pl/pl/images/i/header-footer/caas-hf-v3/hp-logo.gif")
+				.navbar-collapse.collapse#navbar
+					%ul.nav.navbar-nav
+						%li.active=link_to "Link"
+						%li=link_to "Link"
+					%ul.nav.navbar-nav.navbar-right
+						%li=link_to "Sign In"
+						%li=link_to "Sign Up"
 		#wrapper
 			#sidebar-wrapper
 				%ul.sidebar-nav
 					%li.sidebar-brand
-						=link_to "sdfas"
+						%a{:href => "http://www.google.com"}
+							=Blog
+						-Category.all.each do |cat|
+							%p
+								=cat.name
+								=Blog.group(:category_id).size[cat.id].to_i
+								=cat.id			
+			#page-content-wrapper=yield

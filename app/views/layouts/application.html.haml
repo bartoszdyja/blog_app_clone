@@ -22,11 +22,12 @@
 			#sidebar-wrapper
 				%ul.sidebar-nav
 					%li.sidebar-brand
-						%a{:href => "http://www.google.com"}
+						%a{:href => root_path}
 							=Blog
 						-Category.all.each do |cat|
 							%p
-								=cat.name
-								=Blog.group(:category_id).size[cat.id].to_i
-								=cat.id			
+								%a{:href => root_path(sort: cat.name)}
+									=cat.name
+									=Blog.group(:category_id).size[cat.id].to_i
+										
 			#page-content-wrapper=yield
